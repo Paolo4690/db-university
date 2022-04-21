@@ -5,7 +5,7 @@ Selezionare tutti i corsi che valgono più di 10 crediti (479)
 SELECT * FROM `courses` WHERE cfu > 10
 _____________________________________________________________
 Selezionare tutti gli studenti che hanno più di 30 anni
-SELECT * FROM `students` WHERE year(date_of_birth) < 1992
+SELECT * FROM `students` WHERE TIMESTAMPDIFF(YEAR, `date_of_birth`, NOW()) > 30
 _____________________________________________________________
 Selezionare tutti i corsi del primo semestre del primo anno di un qualsiasi corso di laurea (286)
 SELECT * FROM `courses` WHERE period LIKE 'I %' AND year = 1
@@ -20,4 +20,4 @@ Da quanti dipartimenti è composta l'università? (12)
 SELECT COUNT(*) FROM `departments`
 _____________________________________________________________
 Quanti sono gli insegnanti che non hanno un numero di telefono? (50)
-SELECT COUNT(*) FROM teachers WHERE phone IS NOT NULL
+SELECT COUNT(*) FROM teachers WHERE phone IS NULL
